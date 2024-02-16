@@ -20,7 +20,9 @@ HIDE_DATASET = True  # set False when 100% sure about repo quality
 ##################################
 # * After uploading to instance ##
 ##################################
-LICENSE: License = License.Unknown()
+LICENSE: License = License.Custom(
+    source_url="https://drive.google.com/file/d/1TTq1CeQe0Ln8gpY6DceMEK5AXTQEAeJ-/view?usp=drive_link"
+)
 APPLICATIONS: List[Union[Industry, Domain, Research]] = [Domain.General()]
 CATEGORY: Category = Category.General()
 
@@ -31,7 +33,7 @@ RELEASE_DATE: Optional[str] = "2021-11-07"  # e.g. "YYYY-MM-DD"
 if RELEASE_DATE is None:
     RELEASE_YEAR: int = None
 
-HOMEPAGE_URL: str = "https://www.v7labs.com/open-datasets/natural-adversarial-object-nao"
+HOMEPAGE_URL: str = "https://drive.google.com/drive/folders/15P8sOWoJku6SSEiHLEts86ORfytGezi8"
 # e.g. "https://some.com/dataset/homepage"
 
 PREVIEW_IMAGE_ID: int = 14043014
