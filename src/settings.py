@@ -36,7 +36,7 @@ if RELEASE_DATE is None:
 HOMEPAGE_URL: str = "https://drive.google.com/drive/folders/15P8sOWoJku6SSEiHLEts86ORfytGezi8"
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = 14043014
+PREVIEW_IMAGE_ID: int = 14055601
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
 GITHUB_URL: str = "https://github.com/dataset-ninja/nao"

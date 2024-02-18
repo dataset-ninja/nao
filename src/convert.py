@@ -83,7 +83,7 @@ def convert_and_upload_supervisely_project(
     val_anns = "/home/alex/DATASETS/TODO/NAO/annotations-20231225T151942Z-001/annotations/instances_validation.json"
     test_anns = "/home/alex/DATASETS/TODO/NAO/annotations-20231225T151942Z-001/annotations/instances_test.json"
 
-    ds_name_to_anns = {"train": train_anns, "val": val_anns, "test": test_anns}
+    ds_name_to_anns = {"val": val_anns, "test": test_anns, "train": train_anns}
 
     def create_ann(image_path):
         labels = []
@@ -119,6 +119,8 @@ def convert_and_upload_supervisely_project(
     category_id_to_classes = {}
     name_to_super = {}
 
+    im_names_with_anns = []
+
     super_meta = sly.TagMeta("supercategory", sly.TagValueType.ANY_STRING)
 
     meta = sly.ProjectMeta(tag_metas=[super_meta])
@@ -153,6 +155,7 @@ def convert_and_upload_supervisely_project(
         progress = sly.Progress("Create dataset {}".format(ds_name), len(image_id_to_ann_data))
 
         images_names = list(image_id_to_ann_data.keys())
+        im_names_with_anns.extend(images_names)
 
         for images_names_batch in sly.batched(images_names, batch_size=batch_size):
             img_pathes_batch = [
@@ -166,5 +169,19 @@ def convert_and_upload_supervisely_project(
             api.annotation.upload_anns(img_ids, anns)
 
             progress.iters_done_report(len(images_names_batch))
+
+        if ds_name == "train":
+            all_images_names = [get_file_name(im_name) for im_name in os.listdir(dataset_path)]
+            im_names_without_anns = list(set(all_images_names) - set(im_names_with_anns))
+
+            for images_names_batch in sly.batched(im_names_without_anns, batch_size=batch_size):
+                img_pathes_batch = [
+                    os.path.join(dataset_path, im_name + ".jpg") for im_name in images_names_batch
+                ]
+
+                img_infos = api.image.upload_paths(dataset.id, images_names_batch, img_pathes_batch)
+                img_ids = [im_info.id for im_info in img_infos]
+
+                progress.iters_done_report(len(images_names_batch))
 
     return project
