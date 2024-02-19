@@ -1,7 +1,7 @@
 The authors introduce the **NAO: Natural Adversarial Object Dataset** to evaluate the robustness of object detection models. NAO contains 7,934 images and 
 13,604 objects that are unmodified and representative of real-world scenarios, but cause state-of-the-art detection models to misclassify with high confidence. The mean average precision (mAP) of EfficientDet-D7 drops 74.5% when evaluated on NAO compared to the standard MSCOCO validation set.
 
-**Note:** the latest version of NAO contains 13,604 objects.
+**Note:** the version of NAO from 20.04.2022 contains 13,604 objects.
 
 ## Motivation
 
