@@ -1,6 +1,6 @@
 Dataset **NAO** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://www.dropbox.com/scl/fi/d2tnbozoblf3r479r0ue3/nao-DatasetNinja.tar?rlkey=8uv3up022vb181avqicn6qx3w&dl=1)
+ [Download](https://assets.supervisely.com/remote/eyJsaW5rIjogImZzOi8vYXNzZXRzLzM1MjdfTkFPL25hby1EYXRhc2V0TmluamEudGFyIiwgInNpZyI6ICJKVWdnTXdSQzlkOTcrdVZjTDRlZjZSdWc4YW0vaVZwZGZJUWZQQ2N3Rk1FPSJ9)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
